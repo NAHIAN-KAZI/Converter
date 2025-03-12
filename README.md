@@ -17,3 +17,16 @@ You can install the necessary dependencies by following the instructions below.
 
 ```bash
 git clone https://github.com/NVIDIA-AI-IOT/torch2trt
+```
+### 2. Install the dependencies:
+
+```bash
+cd torch2trt
+pip install nvidia-pyindex
+pip install nvidia-tensorrt
+```
+### 3. Build and install torch2trt:
+
+```bash
+python setup.py install
+```
