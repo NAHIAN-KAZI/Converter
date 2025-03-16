@@ -73,11 +73,7 @@ pip install torch-tensorrt
 ```bash
 pip install --pre torch-tensorrt --index-url https://download.pytorch.org/whl/nightly/cu124
 ```
-3. Build and install torch2trt:
 
-```bash
-python setup.py install
-```
 ## Key Differences
 
 | Feature | Torch2TRT | Torch-TensorRT |
