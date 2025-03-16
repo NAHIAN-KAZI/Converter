@@ -5,10 +5,10 @@ This document provides a comparative analysis of Torch2TRT and Torch-TensorRT, b
 ## Overview
 
 ### Torch2TRT
-Torch2TRT is a lightweight PyTorch to TensorRT converter that enables model acceleration by converting a PyTorch model to TensorRT using the `torch2trt()` API.
+Torch2TRT is an official NVIDIA library that integrates TensorRT into PyTorch, providing seamless conversion of models using `torch2trt()` API.
 
 ### Torch-TensorRT
-Torch-TensorRT is an official NVIDIA library that integrates TensorRT into PyTorch, providing seamless conversion of models using `torch_tensorrt.compile()`.
+Torch-TensorRT is a lightweight PyTorch to TensorRT converter that enables model acceleration by converting a PyTorch model to TensorRT using the `torch_tensorrt.compile()`.
 
 ## Conversion Method
 
