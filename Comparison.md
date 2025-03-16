@@ -1,14 +1,16 @@
 # Torch2TRT vs Torch-TensorRT
 
-This document provides a comparative analysis of Torch2TRT and Torch-TensorRT, both of which are used to convert PyTorch models to TensorRT for optimized inference. Torch2TRT is part of NVIDIA's official repository, while Torch-TensorRT is maintained as an official PyTorch repository.
+This document provides a comparative analysis of **Torch2TRT** and **Torch-TensorRT**, both of which are used to convert PyTorch models to TensorRT for optimized inference.
 
 ## Overview
 
 ### Torch2TRT
-Torch2TRT is an official NVIDIA library that integrates TensorRT into PyTorch, providing seamless conversion of models using `torch2trt()` API.
+Torch2TRT is a PyTorch to TensorRT converter which utilizes the TensorRT Python API, created by NVIDIA-AI-IOT.
 
 ### Torch-TensorRT
-Torch-TensorRT is a lightweight PyTorch to TensorRT converter that enables model acceleration by converting a PyTorch model to TensorRT using the `torch_tensorrt.compile()`.
+Torch-TensorRT is a inference compiler for PyTorch, targeting NVIDIA GPUs via NVIDIA’s TensorRT Deep Learning Optimizer and Runtime. It supports both just-in-time (JIT) compilation workflows via the torch.compile interface as well as ahead-of-time (AOT) workflows. Torch-TensorRT integrates seamlessly into the PyTorch ecosystem supporting hybrid execution of optimized TensorRT code with standard PyTorch code.
+
+
 
 ## Conversion Method
 
@@ -76,17 +78,22 @@ pip install --pre torch-tensorrt --index-url https://download.pytorch.org/whl/ni
 
 | Feature | Torch2TRT | Torch-TensorRT |
 |---------|-----------|---------------|
-| **Integration** | Standalone library | Official NVIDIA PyTorch integration |
-| **Conversion API** | `torch2trt()` | `torch_tensorrt.compile()` |
-| **Requires TorchScript?** | ❌ No | ✅ Yes |
-| **Model Type** | PyTorch Module | TorchScript Module |
+| **Integration** | NVIDIA-AI-IOT created library | Official NVIDIA production library |
+| **Conversion API** | `torch2trt()` | `torch_tensorrt.compile()` or `torch.compile()` with TensorRT backend |
+| **Requires TorchScript?** | ❌ No | ✅ Yes (for deployment) |
+| **Model Type** | PyTorch Module | TorchScript Module or ExportedProgram |
 | **Installation Complexity** | Medium (Requires manual cloning) | Easy (PyPI package) |
 | **Performance Optimization** | Good | Better (Deeper integration with PyTorch) |
 | **Support & Updates** | Community-maintained | Officially supported by NVIDIA |
-| **Inference Speedup** | Moderate | Higher due to deeper TensorRT integration |
+| **Inference Speedup** | Up to 3x (based on benchmarks) | Up to 5x compared to eager execution |
+| **Deployment Options** | Python only | Python and C++ (libtorch) |
+| **Platform Support** | Limited | Comprehensive (Linux, Windows, Jetson) |
+| **Documentation** | Basic | Extensive |
+| **Extendability** | Easy to extend with custom converters | Integrated with PyTorch ecosystem |
+| **Project Focus** | Educational (Created for JetBot project) | Production deployment |
 
 ## Conclusion
 
-Both Torch2TRT and Torch-TensorRT help in optimizing PyTorch models for deployment using TensorRT. However, **Torch-TensorRT** is better suited for production applications due to its official NVIDIA support, better performance, and PyTorch-native integration. **Torch2TRT**, on the other hand, is a lightweight alternative that is easier to use for quick model conversion without requiring TorchScript.
+Both Torch2TRT and Torch-TensorRT help in optimizing PyTorch models for deployment using TensorRT. However, **Torch-TensorRT** is better suited for production applications due to its official NVIDIA support, better performance, and PyTorch-native integration. **Torch2TRT** is a lightweight alternative that is easier to use for quick model conversion without requiring TorchScript, originally created for the JetBot project.
 
 Choose the right tool based on your specific needs and deployment requirements!
